@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="tester.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="tester.js"></script>
+
+  </head>
+
+
+<div class="container">
+  <div class="row">
+    <h2 style="padding: 15px 0 15px 0;">Goal: Learn How to Cook</h2>
+  </div>
+  <div style="padding-bottom: 25px;">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" id="home-nav">VIDEOS BY RECIPE</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="fave-nav">FAVORITES</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="watch-nav">WATCH</a>
+      </li>
+    </ul>
+  </div>
+  <div id="vid-menu-body">
+  </div>
+  <div id="vid-body">
+    <div class="row" style="padding-bottom: 10px;">
+      <div class="col-md-6 offset-md-3">
+        <div class="row" style="padding-bottom: 10px;">
+          <h3 id="recipe-title"></h3>
+        </div>
+        <div class="row">
+          <div class="col-md-6"><h5 id="step-title"></h5></div>
+          <div class="col-md-6" style="text-align: right;">Go to Step <div><select id="skip-step-drop"></select></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div id="player" class="col-md-6 offset-md-3"></div>
+    </div>
+    <div class="row justify-content-md-center" id="video-controls">
+      <div class="col-md-2">
+        <button type="button" class="btn btn-light" id="play-slower-button"><img class="video-buttons" id="play-slower" src="slow-button.png"/></button>
+        <button type="button" class="btn btn-light" id="play-faster-button"><img class="video-buttons" id="play-faster" src="fast-button.png"/></button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-light" id="pause-button"><img class="video-buttons" id="pause" src="pause-button.png"/></button> 
+        <button type="button" class="btn btn-light" id="play-button"><img class="video-buttons" id="play" src="play-button.png"/></button> 
+        <button type="button" class="btn btn-light" id="add-fave-button"><img class="video-buttons" id="add-fave" src="add-fave.png"/></button> 
+        <button type="button" class="btn btn-light" id="remove-fave-button"><img class="video-buttons" id="remove-fave" src="remove-fave.png"/></button> 
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-light" id="play-prev-button"><img class="video-buttons" id="play-prev" src="back-button.png"/></button>
+        <button type="button" class="btn btn-light" id="play-next-button"><img class="video-buttons" id="play-next" src="next-button.png"/></button>   
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-2">
+        Adjust Speed
+      </div>
+      <div class="col-md-2">
+       
+      </div>
+      <div class="col-md-2">
+        Skip Step
+      </div>
+    </div>
+  </div>
+  <div id="vid-faves-body">
+  </div>
+</div>
+
+</html>

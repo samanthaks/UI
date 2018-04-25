@@ -1,0 +1,27 @@
+#left-arrow, #right-arrow, .arrow {
+	width: 100%;
+}
+
+#video-controls {
+	padding-top: 20px;
+}
+
+.video-buttons {
+	height: 30px;
+}
+
+.active {
+	font-weight: bolder;
+}
+
+.menu-item-row{
+	padding: 10px 0 10px 0;
+}
+
+.fave-section{
+	padding: 10px 0 10px 0;
+}
+
+.fave-title{
+	padding-top:25px;
+}
