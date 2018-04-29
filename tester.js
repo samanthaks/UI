@@ -395,6 +395,11 @@ function loadVideoPage() {
   $('#vid-menu-body').hide();
   $('#vid-area').show();
 
+  $('#pause').show();
+  $('#pause-button').show();
+  $('#play').hide();
+  $('#play-button').hide();
+
   $("#playlist-body").empty();
   videos[vid_array_idx]["steps"].forEach((element, index, array) => {
     console.log(index+1);
