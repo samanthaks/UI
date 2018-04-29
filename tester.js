@@ -13,7 +13,7 @@ videos = [
           99, 103
         ],
       "id": "8JXyDtsVGQ0",
-      "img": "gyoza1.jpg",
+      "img": "gyo1za.jpg",
       "steps": [
         {
           "name": "Step 1",
