@@ -107,3 +107,11 @@
 	padding-left: 15px;
 	padding-right: 15px;
 }
+
+.nav-link:hover{
+	cursor: pointer;
+}
+
+#website-title{
+	text-align: center;
+}

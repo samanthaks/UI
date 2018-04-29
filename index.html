@@ -31,9 +31,7 @@
 
 
 <div class="container">
-  <div class="row">
-    <h2 style="padding: 15px 0 15px 0;">Learn to Cook with Tasty Videos</h2>
-  </div>
+  <h2 style="padding: 20px 0 10px 0;" id="website-title">Learn to Cook with Tasty Videos</h2>
   <div style="padding-bottom: 25px;">
     <ul class="nav justify-content-center">
       <li class="nav-item">
@@ -46,6 +44,8 @@
   </div>
   <div id="vid-menu-body">
     
+  </div>
+  <div id="finished-page">
   </div>
   <div class="row" id="vid-area">
     <div class="col-md-12"><h3 style="padding-bottom: 10px;"></h3></div>
@@ -73,28 +73,28 @@
           <div id="player"></div>
         </div>
         <div class="row" id="video-controls">
-          <div class="col-md-6">
+          <div class="col-md-5">
             <button type="button" class="btn btn-light" id="play-prev-button"><img class="video-buttons" id="play-prev" src="back-button.png"/></button>
             <button type="button" class="btn btn-light" id="pause-button"><img class="video-buttons" id="pause" src="pause-button.png"/></button> 
             <button type="button" class="btn btn-light" id="play-button"><img class="video-buttons" id="play" src="play-button.png"/></button> 
             <button type="button" class="btn btn-light" id="play-next-button"><img class="video-buttons" id="play-next" src="next-button.png"/></button>  
             <button type="button" class="btn btn-success" id="finished">Complete Recipe</button>  
           </div>
-          <div class="col-md-6 text-right" style="display: inline-block;">
-            <button type="button" class="btn btn-light" id="loop-button">Loop Video</button>
-            <button type="button" class="btn btn-light" id="unloop-button">Unloop Video</button>
+          <div class="col-md-7 text-right" style="display: inline-block;">
             <div class="dropdown" id="speed-dropdown-div" style="display:inline-block;">
-              <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" id="speed-drop-button">Adjust Speed</button>
+              <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" id="speed-drop-button">Adjust Speed (.75x)</button>
               <div class="dropdown-menu" aria-labelledby="speed-drop-button" id="speed-list">
+                <a class="dropdown-item" href="#player" value=".25">.25x</a>
                 <a class="dropdown-item" href="#player" value=".5">.5x</a>
-                <a class="dropdown-item" href="#player" value=".75">.75x</a>
-                <a class="dropdown-item active" href="#player" value="1">1x</a>
+                <a class="dropdown-item active" href="#player" value=".75">.75x</a>
+                <a class="dropdown-item" href="#player" value="1">1x</a>
                 <a class="dropdown-item" href="#player" value="1.25">1.25x</a>
                 <a class="dropdown-item" href="#player" value="1.50">1.5x</a>
               </div>
             </div>
+            <button type="button" class="btn btn-light" id="loop-button">Loop Video</button>
+            <button type="button" class="btn btn-light" id="unloop-button">Unloop Video</button>
           </div>
-          
         </div>
       </div>
     </div>

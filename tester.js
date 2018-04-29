@@ -107,12 +107,13 @@ videos = [
 var step_list = [];
 var count = 0;
 var vid_array_idx = 0;
-var loop_on = false;
+var loop_on = true;
 
 $(document).ready(function(){
   loadScript();
 
   $('#home-nav').addClass('active');
+  $('#finished-page').hide();
   $('#vid-area').hide();
   $('#watch-nav').hide();
 
@@ -244,6 +245,10 @@ function createVidUI(vid_index) {
     $('#step-num').html("Step ".concat(parseInt((count/2)+1)).concat(" of ").concat(parseInt(videos[vid_array_idx]['times'].length/2)));
     $('#step-title').html(videos[parseInt(vid_index)]["steps"][parseInt((count/2)+1)-1]["description"]);
 
+    $('#playlist-body div.active').removeClass('active');
+    var value = parseInt((count/2)+1);
+    $('#playlist-body div[value="'+value+'"]').addClass('active');
+
     ytplayer.seekTo(parseInt(videos[vid_array_idx]['times'][count]), true);
     playVideo();
 
@@ -258,8 +263,14 @@ function createVidUI(vid_index) {
     $('#play-next').show();
     $('#play-next-button').show();
     $('#finished').hide();
+
     if (count != 0){
       count = count - 2;
+
+      $('#playlist-body div.active').removeClass('active');
+      var value = parseInt((count/2)+1);
+      $('#playlist-body div[value="'+value+'"]').addClass('active');
+
       $('#step-num').html("Step ".concat(parseInt((count/2)+1)).concat(" of ").concat(parseInt(videos[vid_array_idx]['times'].length/2)));
       $('#step-title').html(videos[parseInt(vid_index)]["steps"][parseInt((count/2)+1)-1]["description"]);
       ytplayer.seekTo(parseInt(videos[vid_array_idx]['times'][count]), true);
@@ -275,10 +286,11 @@ function createVidUI(vid_index) {
   $('#speed-list a').click(function(e) {
     $('#speed-list a.active').removeClass('active');
     var speed = $(this).text();
+    $('#speed-drop-button').text('Adjust Speed ('.concat(speed).concat(")"));
     speed = parseFloat(speed.substring(0, speed.length-1));
     $(this).addClass('active');
     console.log("set speed to ", speed);
-    e.stopPropagation();
+    // e.stopPropagation();
     setPlaybackRate(speed);
   });
 
@@ -292,6 +304,7 @@ function createVidUI(vid_index) {
   })
 
   $('#finished').click(function(){
+    $('#vid-area').hide();
     alert("Congrats you've learnt how to make " + videos[vid_array_idx]["name"] + "!! Watch more videos to learn more recipes!");
     $('#watch-nav').removeClass('active');
     $('#home-nav').addClass('active');
@@ -328,16 +341,20 @@ function createHomeUI() {
   //   $("#vid-menu-body").append(new_row);
   // });
 
-  var new_row = $('<div class="row menu-item-row">' 
-    + '<div class="col-md-6 offset-md-3">'
-    + '<button type="button" class="btn btn-light watch-vid" value="0">'
-    + videos[0].name + '</button></div>'
+  var new_row = $('<div class="card" style="width: 18rem;">' 
+    + '<img class="card-img-top" src="' + videos[vid_array_idx]["img"] + '">'
+    + '<div class="card-body">'
+    + '<h5 class="card-title">'+videos[0].name+'</h5>'
+    + '<p class="card-text">Juicy on the inside, crispy and golden brown on the outside, these Japanese pan-fried dumplings, Gyoza, are popular weeknight meal as well as a great appetizer for your next dinner party.</p>'
+    + '<a href="#" class="btn btn-primary watch-vid" value="0">Cook Now</a></div>'
     + '</div>');
   $("#vid-menu-body").append(new_row);
 
   $('.watch-vid').on("click", function(event){
     console.log("video clicked");
-    vid_array_idx = parseInt(event['target']['value']);
+
+    vid_array_idx = parseInt(event['target']['attributes']['value']['nodeValue']);
+    console.log(event);
     if (ytplayer) {
       ytplayer.loadVideoById(videos[vid_array_idx]["id"]);
     }
@@ -362,7 +379,7 @@ function loadVideoPage() {
 
   console.log(step_list);
 
-  $('#unloop-button').hide();
+  $('#loop-button').hide();
 
 
   $('#recipe-icon').html('<img src="'.concat(videos[vid_array_idx]["img"]).concat('" id="vid-icon">'));
@@ -378,6 +395,7 @@ function loadVideoPage() {
   $('#vid-menu-body').hide();
   $('#vid-area').show();
 
+  $("#playlist-body").empty();
   videos[vid_array_idx]["steps"].forEach((element, index, array) => {
     console.log(index+1);
     var new_row = $('<div class="playlist-item dropdown-item" value="'+ (index+1) +'"><strong>'
@@ -411,6 +429,7 @@ function loadVideoPage() {
       $('#play-next-button').show();
       $('#finished').hide();
     }
+    setPlaybackRate(0.75);
     playVideo();
 
     e.stopPropagation();
