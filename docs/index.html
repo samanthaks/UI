@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  <!--   <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.css">
+ -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     <!-- 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ -->
+  
+
+  
+
+    <link rel="stylesheet" href="tester.css">
+
+
+    <script src="tester.js"></script>
+
+  </head>
+
+
+<div class="container">
+  <div class="row">
+    <h2 style="padding: 15px 0 15px 0;">Learn to Cook with Tasty Videos</h2>
+  </div>
+  <div style="padding-bottom: 25px;">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" id="home-nav">RECIPE VIDEOS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="watch-nav">WATCH</a>
+      </li>
+    </ul>
+  </div>
+  <div id="vid-menu-body">
+    
+  </div>
+  <div class="row" id="vid-area">
+    <div class="col-md-12"><h3 style="padding-bottom: 10px;"></h3></div>
+
+    <div class="col-md-5">
+      <div id="vid-playlist-body">
+        <div id="playlist-head">
+          <div id="recipe-icon">
+          </div>
+          <div id="recipe-title">
+          </div>
+        </div>
+        <div id="playlist-body">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div id="vid-body">
+        <div class="row" style="padding-bottom: 10px;">
+          
+          <div class="col-md-12"><p id="step-num"></p><h5 id="step-title"></h5></div>
+          
+        </div>
+        <div class="row" id="play-box">
+          <div id="player"></div>
+        </div>
+        <div class="row" id="video-controls">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-light" id="play-prev-button"><img class="video-buttons" id="play-prev" src="back-button.png"/></button>
+            <button type="button" class="btn btn-light" id="pause-button"><img class="video-buttons" id="pause" src="pause-button.png"/></button> 
+            <button type="button" class="btn btn-light" id="play-button"><img class="video-buttons" id="play" src="play-button.png"/></button> 
+            <button type="button" class="btn btn-light" id="play-next-button"><img class="video-buttons" id="play-next" src="next-button.png"/></button>  
+            <button type="button" class="btn btn-success" id="finished">Complete Recipe</button>  
+          </div>
+          <div class="col-md-6 text-right" style="display: inline-block;">
+            <button type="button" class="btn btn-light" id="loop-button">Loop Video</button>
+            <button type="button" class="btn btn-light" id="unloop-button">Unloop Video</button>
+            <div class="dropdown" id="speed-dropdown-div" style="display:inline-block;">
+              <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" id="speed-drop-button">Adjust Speed</button>
+              <div class="dropdown-menu" aria-labelledby="speed-drop-button" id="speed-list">
+                <a class="dropdown-item" href="#player" value=".5">.5x</a>
+                <a class="dropdown-item" href="#player" value=".75">.75x</a>
+                <a class="dropdown-item active" href="#player" value="1">1x</a>
+                <a class="dropdown-item" href="#player" value="1.25">1.25x</a>
+                <a class="dropdown-item" href="#player" value="1.50">1.5x</a>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</html>
