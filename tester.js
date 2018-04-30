@@ -208,7 +208,7 @@ function play_steps() {
         playVideo();
       }, 1000);
 
-      ytplayer.seekTo(parseInt(videos[vid_array_idx]['times'][count]), true);
+      ytplayer.seekTo(parseInt(videos[vid_array_idx]['times'][count])+.5, true);
       pauseVideo();
 
       // ytplayer.seekTo(parseInt(videos[vid_array_idx]['times'][count]), true);
