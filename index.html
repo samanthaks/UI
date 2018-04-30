@@ -42,8 +42,41 @@
       </li>
     </ul>
   </div>
-  <div id="vid-menu-body">
+  <div class="card-deck" id="vid-menu-body">
+    <div class="card">
+      <img class="card-img-top" src="fryingpansoupdumpl.png">
+      <div class="card-body">
+        <h5 class="card-title">Frying Pan Soup Dumplings</h5>
+        <p class="card-text">A pork filling is encased in a thin, chewy dough, crisped on the bottom, beautifully pleated at the top, and the first bite unleashes a torrent of heady, fragrant stock.</p>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="btn btn-primary watch-vid" value="1">Cook Now</a>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="gyo1za.jpg">
+      <div class="card-body">
+        <h5 class="card-title">Gyoza Dumplings</h5>
+        <p class="card-text">Juicy on the inside, crispy and golden brown on the outside, these Japanese pan-fried dumplings, Gyoza, are popular weeknight meal as well as a great appetizer for your next dinner party.</p>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="btn btn-primary watch-vid" value="0">Cook Now</a>
+      </div>
+    </div> 
+    <div class="card">
+      <img class="card-img-top" src="blank.png" border="1px;">
+      <div class="card-body">
+        <h5 class="card-title">Stay tuned for more recipes!</h5>
+        <p class="card-text"></p>
+        
+      </div>
+      <div class="card-footer">
+        <button disabled class="btn btn-primary" value="">Coming Soon...</button>
+      </div>
+    </div>
     
+
+
   </div>
   <div id="finished-page">
   </div>
@@ -63,7 +96,7 @@
       </div>
     </div>
     <div class="col-md-7">
-      <div id="vid-body">
+      <div id="vid-body" >
         <div class="row" style="padding-bottom: 10px;">
           
           <div class="col-md-12"><p id="step-num"></p><h5 id="step-title"></h5></div>
@@ -73,20 +106,20 @@
           <div id="player"></div>
         </div>
         <div class="row" id="video-controls">
-          <div class="col-md-5">
+          <div class="col-md-6">
             <button type="button" class="btn btn-light" id="play-prev-button"><img class="video-buttons" id="play-prev" src="back-button.png"/></button>
             <button type="button" class="btn btn-light" id="pause-button"><img class="video-buttons" id="pause" src="pause-button.png"/></button> 
             <button type="button" class="btn btn-light" id="play-button"><img class="video-buttons" id="play" src="play-button.png"/></button> 
             <button type="button" class="btn btn-light" id="play-next-button"><img class="video-buttons" id="play-next" src="next-button.png"/></button>  
-            <button type="button" class="btn btn-success" id="finished">Complete Recipe</button>  
+            <button type="button" class="btn btn-success" id="finished">Finish Cooking</button>  
           </div>
-          <div class="col-md-7 text-right" style="display: inline-block;">
+          <div class="col-md-6 text-right" style="display: inline-block; padding-left: 0px;">
             <div class="dropdown" id="speed-dropdown-div" style="display:inline-block;">
-              <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" id="speed-drop-button">Adjust Speed (.75x)</button>
+              <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" id="speed-drop-button">Adjust Speed (.5x)</button>
               <div class="dropdown-menu" aria-labelledby="speed-drop-button" id="speed-list">
                 <a class="dropdown-item" href="#player" value=".25">.25x</a>
-                <a class="dropdown-item" href="#player" value=".5">.5x</a>
-                <a class="dropdown-item active" href="#player" value=".75">.75x</a>
+                <a class="dropdown-item active" href="#player" value=".5">.5x</a>
+                <a class="dropdown-item" href="#player" value=".75">.75x</a>
                 <a class="dropdown-item" href="#player" value="1">1x</a>
                 <a class="dropdown-item" href="#player" value="1.25">1.25x</a>
                 <a class="dropdown-item" href="#player" value="1.50">1.5x</a>

@@ -53,52 +53,52 @@ videos = [
         }]
     },
     {
-      "name": "Rose Dumplings",
+      "name": "Frying Pan Soup Dumplings",
       "times": [
-          59, 61,
-          62, 69, 
-          70, 73,
-          74, 85,
-          86, 87,
-          88, 91,
-          92, 93,
-          94, 98,
-          99, 103
+          155.5, 163,
+          164, 168, 
+          169, 179,
+          180, 185,
+          186, 191,
+          192, 193,
+          194, 196,
+          197, 201
         ],
       "id": "8JXyDtsVGQ0", // after gyoza dumpling
-      "img": "rosedumpling.png"
-    },
-    // {
-    //   "name": "Vegetarian Potstickers",
-    //   "times": [
-    //       59, 61,
-    //       62, 69, 
-    //       70, 73,
-    //       74, 85,
-    //       86, 87,
-    //       88, 91,
-    //       92, 93,
-    //       94, 98,
-    //       99, 103
-    //     ],
-    //   "id": "K2UieyGTHOw",
-    //   "img": "vegpotsticker.png"
-    // },
-    {
-      "name": "Pan-Fried Soup Dumplings",
-      "times": [
-          59, 61,
-          62, 69, 
-          70, 73,
-          74, 85,
-          86, 87,
-          88, 91,
-          92, 93,
-          94, 98,
-          99, 103
-        ],
-      "id": "pEdMpRuFGEk", 
-      "img": "panfriedsoupdumpling.png"
+      "img": "fryingpansoupdumpl.png",
+      "steps": [
+        {
+          "name": "Step 1",
+          "description": "For the soup, add the hot water, gelatin powder, soy sauce, and chicken stock to a medium bowl. Stir to combine. Pour into a shallow dish and chill in the refrigerator for 1 hour, until set."
+        },
+        {
+          "name": "Step 2",
+          "description": "When set, fluff and break up the jellied soup with a fork."
+        },
+        {
+          "name": "Step 3",
+          "description": "For the filling, combine the ground pork, green onion, mushrooms, ginger, garlic, sesame oil, and sake in a medium bowl. Mix with your hands until combined."
+        },
+        {
+          "name": "Step 4",
+          "description": "Scoop a spoonful of filling onto the middle of a dumpling wrapper. Add a spoonful of soup jelly on top."
+        },
+        {
+          "name": "Step 5",
+          "description": "Fold up the edges of the dumpling and pinch everything in the center. Repeat with the remaining dumpling wrappers and filling."
+        },
+        {
+          "name": "Step 6",
+          "description": "Put a plate in a medium pan pan, and lay a piece of parchment paper over it."
+        },
+        {
+          "name": "Step 7",
+          "description": "Set the dumplings on the plate and pour 150 milliliters (⅔ cup) water under the plate. Cover and steam for 5 minutes over medium heat."
+        },
+        {
+          "name": "Step 8",
+          "description": "Enjoy!"
+        }]
     }
   ];
 
@@ -108,6 +108,8 @@ var step_list = [];
 var count = 0;
 var vid_array_idx = 0;
 var loop_on = true;
+var sleep = false;
+var current_scroll = 0;
 
 $(document).ready(function(){
   loadScript();
@@ -152,6 +154,8 @@ var ytplayer;
 
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
+  ytplayer.seekTo(parseInt(videos[vid_array_idx]['times'][count]), true);
+  setPlaybackRate(0.5);
   event.target.playVideo();
   ytplayer.setVolume(0);
   repeatInt = setInterval('play_steps()', 1000);
@@ -196,7 +200,18 @@ function play_steps() {
     if (parseInt(videos[vid_array_idx]['times'][count+1]) < ytplayer.getCurrentTime()) {
     	console.log("LOOP");
     	console.log(ytplayer.getCurrentTime());
+
+      sleep = true;
+      setTimeout(function(){
+        sleep = false;
+        console.log("sleep over");
+        playVideo();
+      }, 1000);
+
       ytplayer.seekTo(parseInt(videos[vid_array_idx]['times'][count]), true);
+      pauseVideo();
+
+      // ytplayer.seekTo(parseInt(videos[vid_array_idx]['times'][count]), true);
     }
     if (parseInt(videos[vid_array_idx]['times'][count]) > ytplayer.getCurrentTime()) {
       ytplayer.seekTo(videos[vid_array_idx]['times'][count], true);
@@ -249,6 +264,10 @@ function createVidUI(vid_index) {
     var value = parseInt((count/2)+1);
     $('#playlist-body div[value="'+value+'"]').addClass('active');
 
+    var scroll_amt = $("#playlist-body div.active").position().top - $("#playlist-body").position().top;
+    current_scroll += scroll_amt;
+    $("#playlist-body").scrollTop(scroll_amt);
+
     ytplayer.seekTo(parseInt(videos[vid_array_idx]['times'][count]), true);
     playVideo();
 
@@ -270,6 +289,10 @@ function createVidUI(vid_index) {
       $('#playlist-body div.active').removeClass('active');
       var value = parseInt((count/2)+1);
       $('#playlist-body div[value="'+value+'"]').addClass('active');
+
+      var scroll_amt = $("#playlist-body div.active").position().top - $("#playlist-body").position().top;
+      current_scroll += scroll_amt;
+      $("#playlist-body").scrollTop(scroll_amt);
 
       $('#step-num').html("Step ".concat(parseInt((count/2)+1)).concat(" of ").concat(parseInt(videos[vid_array_idx]['times'].length/2)));
       $('#step-title').html(videos[parseInt(vid_index)]["steps"][parseInt((count/2)+1)-1]["description"]);
@@ -332,23 +355,6 @@ function createVidUI(vid_index) {
 
 
 function createHomeUI() {
-  // videos.forEach((element, index, array) => {
-  //   var new_row = $('<div class="row menu-item-row">' 
-  //     + '<div class="col-md-6 offset-md-3">'
-  //     + '<button type="button" class="btn btn-light watch-vid" value="'+index+'">'
-  //     + element.name + '</button></div>'
-  //     + '</div>');
-  //   $("#vid-menu-body").append(new_row);
-  // });
-
-  var new_row = $('<div class="card" style="width: 18rem;">' 
-    + '<img class="card-img-top" src="' + videos[vid_array_idx]["img"] + '">'
-    + '<div class="card-body">'
-    + '<h5 class="card-title">'+videos[0].name+'</h5>'
-    + '<p class="card-text">Juicy on the inside, crispy and golden brown on the outside, these Japanese pan-fried dumplings, Gyoza, are popular weeknight meal as well as a great appetizer for your next dinner party.</p>'
-    + '<a href="#" class="btn btn-primary watch-vid" value="0">Cook Now</a></div>'
-    + '</div>');
-  $("#vid-menu-body").append(new_row);
 
   $('.watch-vid').on("click", function(event){
     console.log("video clicked");
@@ -381,7 +387,6 @@ function loadVideoPage() {
 
   $('#loop-button').hide();
 
-
   $('#recipe-icon').html('<img src="'.concat(videos[vid_array_idx]["img"]).concat('" id="vid-icon">'));
   $('#recipe-title').html(videos[vid_array_idx]["name"])
   $('#step-num').html("Step ".concat(parseInt((count/2)+1)).concat(" of ").concat(parseInt(videos[vid_array_idx]['times'].length/2)));
@@ -403,7 +408,7 @@ function loadVideoPage() {
   $("#playlist-body").empty();
   videos[vid_array_idx]["steps"].forEach((element, index, array) => {
     console.log(index+1);
-    var new_row = $('<div class="playlist-item dropdown-item" value="'+ (index+1) +'"><strong>'
+    var new_row = $('<div class="playlist-item dropdown-item" id="'+(index+1)+'" value="'+ (index+1) +'"><strong>'
       + element['name'] + ':</strong> ' + videos[vid_array_idx]["steps"][index]["description"]
       + '</div>');
     if (index == 0){
@@ -413,10 +418,18 @@ function loadVideoPage() {
 
   });
 
+  current_scroll = $("#playlist-body div.active").position().top
+
+
   $('#playlist-body div').click(function(e) {
     console.log('hello');
     $('#playlist-body div.active').removeClass('active');
     $(this).addClass('active');
+
+    var scroll_amt = $("#playlist-body div.active").position().top - $("#playlist-body").position().top;
+    current_scroll += scroll_amt;
+    $("#playlist-body").scrollTop(current_scroll);
+
 
     var num = parseInt(e['target']['attributes']['value']['nodeValue']);
     count = (num - 1)*2;
@@ -434,7 +447,7 @@ function loadVideoPage() {
       $('#play-next-button').show();
       $('#finished').hide();
     }
-    setPlaybackRate(0.75);
+    setPlaybackRate(0.5);
     playVideo();
 
     e.stopPropagation();

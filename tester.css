@@ -53,13 +53,14 @@
 	padding: 20px 0px;
 
 }
-#speed-drop-button, #loop-button, #speed-dropdown-div, #finished{
+#speed-drop-button, #unloop-button, #loop-button, #speed-dropdown-div, #finished{
 	height: 100%;
 }
 
 #recipe-icon, #vid-icon{
 	height: 100%;
 }
+
 
 #recipe-icon, #recipe-title {
 	display: inline-block;
@@ -79,6 +80,10 @@
 
 	margin-bottom: 20px;
 	padding: 5px 20px;
+}
+
+.playlist-item:hover{
+	cursor: pointer;
 }
 
 /* width */
@@ -114,4 +119,28 @@
 
 #website-title{
 	text-align: center;
+}
+
+
+.overlay{
+	position: fixed; 
+    display: none; 
+    width: 100%;
+    height: 100%; 
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black; 
+    z-index: 100000; 
+}
+
+.card-col{
+	margin-right: 0px;
+}
+
+.card-img-top{
+	border-bottom: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: rgba(0, 0, 0, 0.125);
 }
