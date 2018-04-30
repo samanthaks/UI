@@ -13,7 +13,7 @@ videos = [
           99, 103
         ],
       "id": "8JXyDtsVGQ0",
-      "img": "gyo1za.jpg",
+      "img": "images/gyo1za.jpg",
       "steps": [
         {
           "name": "Step 1",
@@ -65,7 +65,7 @@ videos = [
           197, 201
         ],
       "id": "8JXyDtsVGQ0", // after gyoza dumpling
-      "img": "fryingpansoupdumpl.png",
+      "img": "images/fryingpansoupdumpl.png",
       "steps": [
         {
           "name": "Step 1",
@@ -425,11 +425,6 @@ function loadVideoPage() {
     console.log('hello');
     $('#playlist-body div.active').removeClass('active');
     $(this).addClass('active');
-
-    var scroll_amt = $("#playlist-body div.active").position().top - $("#playlist-body").position().top;
-    current_scroll += scroll_amt;
-    $("#playlist-body").scrollTop(current_scroll);
-
 
     var num = parseInt(e['target']['attributes']['value']['nodeValue']);
     count = (num - 1)*2;
